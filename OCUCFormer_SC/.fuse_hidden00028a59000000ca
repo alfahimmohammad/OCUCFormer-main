@@ -1,0 +1,62 @@
+MODEL='dc-cnn_multiple_2x_to_8x'
+BASE_PATH='/media/htic/NewVolume1/murali/MR_reconstruction'
+#DATASET_TYPE='cardiac'
+#DATASET_TYPE='mrbrain_t1','mrbrain_flair'
+CHECKPOINT=${BASE_PATH}'/experiments/'${DATASET_TYPE}'/combined_dataset_mask_acc_factor_for_decouplelearning/'${MODEL}'/best_model.pt'
+BATCH_SIZE=1
+DEVICE='cuda:0'
+USMASK_PATH=${BASE_PATH}'/Reconstruction-for-MRI/us_masks/'
+
+for DATASET_TYPE in 'mrbrain_t1' 'mrbrain_flair'
+    do
+    for MASK_TYPE in 'cartesian'
+        do 
+        for ACC_FACTOR in '4x' '5x' '8x'
+            do 
+            echo ${MASK_TYPE}','${ACC_FACTOR} 
+            OUT_DIR=${BASE_PATH}'/experiments/combined_dataset_mask_acc_factor_for_decouplelearning/'${MODEL}'/results/'${DATASET_TYPE}'/'${MASK_TYPE}'/acc_'${ACC_FACTOR}
+            DATA_PATH=${BASE_PATH}'/datasets/'${DATASET_TYPE}'/'${MASK_TYPE}'/validation/acc_'${ACC_FACTOR}
+            echo python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} 
+            python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} --usmask_path ${USMASK_PATH}
+            done 
+        done 
+    done
+
+<<RUN
+
+for MASK_TYPE in 'cartesian' 'gaussian' 
+    do 
+    for ACC_FACTOR in '2x' '2_5x' '3_3x' '4x' '5x' '8x'
+        do 
+        echo ${MASK_TYPE}','${ACC_FACTOR} 
+        OUT_DIR=${BASE_PATH}'/experiments/'${DATASET_TYPE}'/combinedmask/decouplelearning/'${MODEL}'/results/'${MASK_TYPE}'/acc_'${ACC_FACTOR}
+        DATA_PATH=${BASE_PATH}'/datasets/'${DATASET_TYPE}'/'${MASK_TYPE}'/validation/acc_'${ACC_FACTOR}
+        echo python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} 
+        python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} 
+        done 
+    done 
+
+#<<ACC_FACTOR_2x
+ACC_FACTOR='2x'
+MASK_TYPE='gaussian'
+OUT_DIR=${BASE_PATH}'/experiments/'${DATASET_TYPE}'/combinedmask/decouplelearning/'${MODEL}'/results/'${MASK_TYPE}'/acc_'${ACC_FACTOR}
+BATCH_SIZE=1
+DEVICE='cuda:0'
+DATA_PATH=${BASE_PATH}'/datasets/'${DATASET_TYPE}'/'${MASK_TYPE}'/validation/acc_'${ACC_FACTOR}
+echo python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} 
+python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} 
+#ACC_FACTOR_2x
+
+#<<ACC_FACTOR_2x
+ACC_FACTOR='2x'
+MASK_TYPE='cartesian'
+OUT_DIR=${BASE_PATH}'/experiments/'${DATASET_TYPE}'/combinedmask/decouplelearning/'${MODEL}'/results/'${MASK_TYPE}'/acc_'${ACC_FACTOR}
+BATCH_SIZE=1
+DEVICE='cuda:0'
+DATA_PATH=${BASE_PATH}'/datasets/'${DATASET_TYPE}'/'${MASK_TYPE}'/validation/acc_'${ACC_FACTOR}
+echo python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} 
+python valid.py --checkpoint ${CHECKPOINT} --out-dir ${OUT_DIR} --batch-size ${BATCH_SIZE} --device ${DEVICE} --data-path ${DATA_PATH} --acceleration_factor ${ACC_FACTOR} --dataset_type ${DATASET_TYPE} --mask_type ${MASK_TYPE} 
+#ACC_FACTOR_2x
+RUN
+
+
