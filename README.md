@@ -22,8 +22,13 @@ The proposed network architecture comprises of Over-complete block (OC-Net), an 
 [Requirements](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/requirements.txt)
 
 ### DATASETS:
+Single-Coil (SC) Datasets:
 1. [Automated Cardiac Diagnosis Challenge (ACDC)](https://ieeexplore.ieee.org/document/8360453)
 2. [MRBrainS dataset](https://www.hindawi.com/journals/cin/2015/813696/)
+3. [Calgary dataset](https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.26977)
+
+Multi Coil (MC) Datasets:
+
 
 #### Directory Structure:
 ```
@@ -91,7 +96,7 @@ cd OCUCFormer_MC #For Multi-Coil (MC) experiments
 Example: {DATASET_TYPE} = mrbrain_t1, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ```
 MODEL='OCUCFormer'
-BASE_PATH='/media/Data/MRI'
+BASE_PATH='<Set Path Here>'# have to change accordingly
 
 DATASET_TYPE='mrbrain_t1'
 MASK_TYPE='cartesian'
@@ -111,6 +116,14 @@ python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device $
 
 # --resume --checkpoint ${CHECKPOINT}
 ```
+### Results for MRI Reconstruction: 
+Comparison of our framework with standard KD framework for MRI Reconstruction on MRBrainS and cardiac datasets. In all the KD methods, the student distilled from the SFT-KD-Recon outperforms the ones distilled from the standard teacher.
+![alt text](https://github.com/GayathriMatcha/SFTN-KD-Recon/blob/main/Images/results.png?raw=true)
+
+### Qualitative Results for MRI Reconstruction:
+Visual results (from left to right): target, target inset, ZF, teacher, student, Std-KD, SFT-KD-Recon, student residue, Std-KD residue, SFT-KD-Recon residue with respect to the target, for the brain (top) and cardiac (bottom) with 4x acceleration. We note that in addition to lower reconstruction errors, the SFT-KD distilled student is able to retain finer structures better when compared to the student and Std-KD output.
+![alt text](https://github.com/GayathriMatcha/SFTN-KD-Recon/blob/main/Images/Quant_result.png?raw=true)
+
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
 ```
