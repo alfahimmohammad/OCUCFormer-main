@@ -1,12 +1,12 @@
 # Official Implementation of OCUCFormer: An Over-Complete Under-Complete Transformer Network for Accelerated MRI Reconstruction in PyTorch
 
-## ABSTRACT:
+## [OCUCFormer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4705436)
+
+## Abstract:
 
 Many deep learning-based architectures have been proposed for accelerated Magnetic Resonance Imaging (MRI) reconstruction. However, existing encoder-decoder-based popular networks have a few shortcomings: (1) They focus on the anatomy structure at the expense of fine details, hindering their performance in generating faithful reconstructions; (2) Lack of long-range dependencies yields sub-optimal recovery of fine structural details. In this work, we propose an Over-Complete Under-Complete Transformer network (OCUCFormer) which focuses on better capturing fine edges and details in the image and can extract the long-range relations between these features for improved single-coil (SC) and multi-coil (MC) MRI reconstruction. Our model computes long-range relations in the highest resolutions using Restormer modules for improved acquisition and restoration of fine anatomical details. Towards learning in the absence of fully sampled ground truth for supervision, we show that our model trained with under-sampled data in a self-supervised fashion shows a superior recovery of fine structures compared to other works. We have extensively evaluated our network for SC and MC MRI reconstruction on brain, cardiac, and knee anatomies for 4x and 5x acceleration factors. We report significant improvements over popular deep learning-based methods when trained in supervised and self-supervised modes. We have also performed experiments demonstrating the strengths of extracting fine details and the anatomical structure and computing long-range relations within over-complete representations.
 
 ### Graphical Abstract of OCUCFormer:
-
-
 Graphical abstract to illustrate the effect of Under-Complete (UC) and Over-Complete (OC) respectively on the receptive field and the attention mechanism, respectively. (a) Change in the receptive field:  The change in the receptive field observed in under-complete (blue windows) and over-complete networks (green windows) is depicted. This shows that the size of the receptive field in OC is restricted compared to UC, where it enlarges in successive UC layers. (b) Computation of channel-wise self-attention in OC: (1) The features in the input image are converted to OC features in different channels, (2) The arrow marks indicate the long-range dependencies between the OC features within different channels and applying channel-wise self-attention mechanism captures these relations and results in (3), (3) Final OC features in a particular channel and location are computed using OC features from different channels and locations weighted by their relations. The channel-wise self-attention mechanism of Restormer implicitly models and captures the pixel-wise long-range dependencies within the OC features of different channels (colored patches in row 1 second box diagram: (1) and (2)). 
 
 
@@ -32,7 +32,6 @@ Multi Coil (MC) Datasets:
    
 #### Directory Structure:
 ```
-
 ├── datasets
     |-- {DATASET_TYPE}
         |-- train
@@ -60,7 +59,6 @@ Multi Coil (MC) Datasets:
 ```
 Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ```
-
 ├── datasets
     |-- cardiac
         |-- train
@@ -88,7 +86,7 @@ Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ## Installation
 - Clone this repo:
 ```bash
-git clone [https://github.com/icon-lab/ResViT](https://github.com/alfahimmohammad/OCUCFormer-main.git)
+git clone (https://github.com/alfahimmohammad/OCUCFormer-main.git)
 cd OCUCFormer-main
 cd OCUCFormer_SC #For Single-Coil (SC) experiments
 cd OCUCFormer_MC #For Multi-Coil (MC) experiments
