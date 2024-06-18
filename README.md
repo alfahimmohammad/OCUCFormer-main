@@ -118,11 +118,11 @@ python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device $
 ```
 ### Results for MRI Reconstruction: 
 Comparison of our framework with standard KD framework for MRI Reconstruction on MRBrainS and cardiac datasets. In all the KD methods, the student distilled from the SFT-KD-Recon outperforms the ones distilled from the standard teacher.
-![alt text](https://github.com/GayathriMatcha/SFTN-KD-Recon/blob/main/Images/results.png?raw=true)
+![alt text](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/box_calgary_modified.png?raw=true)
 
 ### Qualitative Results for MRI Reconstruction:
 Visual results (from left to right): target, target inset, ZF, teacher, student, Std-KD, SFT-KD-Recon, student residue, Std-KD residue, SFT-KD-Recon residue with respect to the target, for the brain (top) and cardiac (bottom) with 4x acceleration. We note that in addition to lower reconstruction errors, the SFT-KD distilled student is able to retain finer structures better when compared to the student and Std-KD output.
-![alt text](https://github.com/GayathriMatcha/SFTN-KD-Recon/blob/main/Images/Quant_result.png?raw=true)
+![alt text]([(https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/visual_cardiac_modified.png?raw=true])
 
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
