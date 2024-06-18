@@ -91,7 +91,7 @@ cd OCUCFormer-main
 cd OCUCFormer_SC #For Single-Coil (SC) experiments
 cd OCUCFormer_MC #For Multi-Coil (MC) experiments
 ```
-Example: {DATASET_TYPE} = mrbrain_t1, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
+Example of train.sh bash file in each directory: {DATASET_TYPE} = mrbrain_t1, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ```
 MODEL='OCUCFormer'
 BASE_PATH='<Set Path Here>'# have to change accordingly
