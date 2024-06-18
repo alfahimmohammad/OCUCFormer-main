@@ -85,6 +85,8 @@ Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUC_Former
 ```bash
 git clone [https://github.com/icon-lab/ResViT](https://github.com/alfahimmohammad/OCUCFormer-main.git)
 cd OCUCFormer-main
+cd OCUCFormer_SC #For Single-Coil (SC) experiments
+cd OCUCFormer_MC #For Multi-Coil (MC) experiments
 ```
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
