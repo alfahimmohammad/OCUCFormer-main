@@ -7,7 +7,7 @@ Many deep learning-based architectures have been proposed for accelerated Magnet
 ### Graphical Abstract of OCUCFormer:
 
 
-Graphical abstract to illustrate the effect of Under-Complete (UC) and Over-Complete (OC) respectively on the receptive field and the attention mechanism, respectively. (a) Change in the receptive field:  The change in the receptive field observed in under-complete (blue windows) and over-complete networks (green windows) is depicted. This shows that the size of the receptive field in OC is restricted compared to UC, where it enlarges in successive UC layers. (b) Computation of channel-wise self-attention in OC: (1) The features in the input image are converted to OC features in different channels, (2) The arrow marks indicate the long-range dependencies between the OC features within different channels and applying channel-wise self-attention mechanism captures these relations and results in (3), (3) Final OC features in a particular channel and location are computed using OC features from different channels and locations weighted by their relations. The channel-wise self-attention mechanism of Restormer implicitly models and captures the pixel-wise long-range dependencies within the OC features of different channels (colored patches in (b): (1) and (2)). 
+Graphical abstract to illustrate the effect of Under-Complete (UC) and Over-Complete (OC) respectively on the receptive field and the attention mechanism, respectively. (a) Change in the receptive field:  The change in the receptive field observed in under-complete (blue windows) and over-complete networks (green windows) is depicted. This shows that the size of the receptive field in OC is restricted compared to UC, where it enlarges in successive UC layers. (b) Computation of channel-wise self-attention in OC: (1) The features in the input image are converted to OC features in different channels, (2) The arrow marks indicate the long-range dependencies between the OC features within different channels and applying channel-wise self-attention mechanism captures these relations and results in (3), (3) Final OC features in a particular channel and location are computed using OC features from different channels and locations weighted by their relations. The channel-wise self-attention mechanism of Restormer implicitly models and captures the pixel-wise long-range dependencies within the OC features of different channels (colored patches in row 1 second box diagram: (1) and (2)). 
 
 
 
@@ -23,13 +23,13 @@ The proposed network architecture comprises of Over-complete block (OC-Net), an 
 
 ### DATASETS:
 Single-Coil (SC) Datasets:
-1. [Automated Cardiac Diagnosis Challenge (ACDC)](https://ieeexplore.ieee.org/document/8360453)
-2. [MRBrainS dataset](https://www.hindawi.com/journals/cin/2015/813696/)
-3. [Calgary dataset](https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.26977)
+1. [MRBrainS dataset](https://www.hindawi.com/journals/cin/2015/813696/)
+2. [Automated Cardiac Diagnosis Challenge (ACDC)](https://ieeexplore.ieee.org/document/8360453)
+3. [Calgary dataset](https://www.sciencedirect.com/science/article/pii/S1053811917306687)
 
 Multi Coil (MC) Datasets:
-
-
+1. [Knee MRI dataset](https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.26977)
+   
 #### Directory Structure:
 ```
 
@@ -117,12 +117,12 @@ python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device $
 # --resume --checkpoint ${CHECKPOINT}
 ```
 ### Results for MRI Reconstruction: 
-Comparison of our framework with standard KD framework for MRI Reconstruction on MRBrainS and cardiac datasets. In all the KD methods, the student distilled from the SFT-KD-Recon outperforms the ones distilled from the standard teacher.
+SSIM box plots for recovery of high-frequency details in SC Calgary dataset for 4$\times$ and 5$\times$ acceleration factors (AF)}.
 ![alt text](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/box_calgary_modified.png?raw=true)
 
 ### Qualitative Results for MRI Reconstruction:
-Visual results (from left to right): target, target inset, ZF, teacher, student, Std-KD, SFT-KD-Recon, student residue, Std-KD residue, SFT-KD-Recon residue with respect to the target, for the brain (top) and cardiac (bottom) with 4x acceleration. We note that in addition to lower reconstruction errors, the SFT-KD distilled student is able to retain finer structures better when compared to the student and Std-KD output.
-![alt text]([(https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/visual_cardiac_modified.png?raw=true])
+Visual results: Qualitative analysis of different models trained in supervised method on Cardiac dataset with $4\times$ acceleration factor. All predicted images are zoomed-in regions from within the green box on the ground truth image shown to the left, along with the corresponding zoomed-in error maps. The white circles focus on the regions of interest. The yellow arrows point at the regions that show visible improvement with the GT.
+![alt text](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/visual_cardiac_modified.png?raw=true)
 
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
@@ -133,4 +133,4 @@ You are encouraged to modify/use this code. However, please acknowledge this cod
   journal={Available at SSRN 4705436}
 }
 ```
-For any questions, comments and contributions, please contact Mohammad Al Fahim (alfahimmohammad@gmail.com) <br />
+For any questions, comments, and contributions, please contact Mohammad Al Fahim (alfahimmohammad@gmail.com) <br />
