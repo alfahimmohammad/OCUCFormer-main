@@ -53,7 +53,7 @@ The proposed network architecture comprises of Over-complete block (OC-Net), an 
                     |-- .
                 |-- report.txt
 ```
-Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUC_Former
+Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ```
 
 ├── datasets
@@ -87,6 +87,29 @@ git clone [https://github.com/icon-lab/ResViT](https://github.com/alfahimmohamma
 cd OCUCFormer-main
 cd OCUCFormer_SC #For Single-Coil (SC) experiments
 cd OCUCFormer_MC #For Multi-Coil (MC) experiments
+```
+Example: {DATASET_TYPE} = mrbrain_t1, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
+```
+MODEL='OCUCFormer'
+BASE_PATH='/media/Data/MRI'
+
+DATASET_TYPE='mrbrain_t1'
+MASK_TYPE='cartesian'
+ACC_FACTORS='4x'
+BATCH_SIZE=1
+NUM_EPOCHS=150
+DEVICE='cuda:0'
+EXP_DIR='<Set Path Here>'
+TRAIN_PATH=${BASE_PATH}'/datasets/'
+VALIDATION_PATH=${BASE_PATH}'/datasets/'
+USMASK_PATH=${BASE_PATH}'/usmasks/'
+CHECKPOINT=${EXP_DIR}'/model.pt'
+
+echo python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device ${DEVICE} --exp-dir ${EXP_DIR} --train-path ${TRAIN_PATH} --validation-path ${VALIDATION_PATH} --dataset_type ${DATASET_TYPE} --usmask_path ${USMASK_PATH} --acceleration_factor ${ACC_FACTORS} --mask_type ${MASK_TYPE}
+
+python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device ${DEVICE} --exp-dir ${EXP_DIR} --train-path ${TRAIN_PATH} --validation-path ${VALIDATION_PATH} --dataset_type ${DATASET_TYPE} --usmask_path ${USMASK_PATH} --acceleration_factor ${ACC_FACTORS} --mask_type ${MASK_TYPE} 
+
+# --resume --checkpoint ${CHECKPOINT}
 ```
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
