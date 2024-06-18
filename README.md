@@ -79,3 +79,19 @@ Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUC_Former
                     |-- 2.h5
                     |..
 ```
+## Installation
+- Clone this repo:
+```bash
+git clone [https://github.com/icon-lab/ResViT](https://github.com/alfahimmohammad/OCUCFormer-main.git)
+cd OCUCFormer-main
+```
+# Citation
+You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
+```
+@article{fahim4705436ocucformer,
+  title={OCUCformer: An Over-Complete Under-Complete Transformer Network for Accelerated MRI Reconstruction},
+  author={Fahim, Mohammad Al and Ramanarayanan, Sriprabha and Rahul, GS and Gayathri, Matcha Naga and Sarkar, Arunima and Ram, Keerthi and Sivaprakasam, Mohanasankar},
+  journal={Available at SSRN 4705436}
+}
+```
+For any questions, comments and contributions, please contact Onat Dalmaz (alfahimmohammad@gmail.com) <br />
