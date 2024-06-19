@@ -88,6 +88,7 @@ Example: {DATASET_TYPE} = cardiac, {ACC_FACTOR} = 4x, {MODEL} = OCUCFormer
 ```bash
 git clone (https://github.com/alfahimmohammad/OCUCFormer-main.git)
 cd OCUCFormer-main
+pip install -r requirements.txt
 cd OCUCFormer_SC #For Single-Coil (SC) experiments
 cd OCUCFormer_MC #For Multi-Coil (MC) experiments
 ```
