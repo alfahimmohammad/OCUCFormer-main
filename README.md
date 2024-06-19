@@ -114,13 +114,7 @@ python train.py --batch-size ${BATCH_SIZE} --num-epochs ${NUM_EPOCHS} --device $
 
 # --resume --checkpoint ${CHECKPOINT}
 ```
-### Results for MRI Reconstruction: 
-SSIM box plots for recovery of high-frequency details in SC Calgary dataset for 4$\times$ and 5$\times$ acceleration factors (AF)}.
-![alt text](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/box_calgary_modified.png?raw=true)
 
-### Qualitative Results for MRI Reconstruction:
-Visual results: Qualitative analysis of different models trained in supervised method on Cardiac dataset with $4\times$ acceleration factor. All predicted images are zoomed-in regions from within the green box on the ground truth image shown to the left, along with the corresponding zoomed-in error maps. The white circles focus on the regions of interest. The yellow arrows point at the regions that show visible improvement with the GT.
-![alt text](https://github.com/alfahimmohammad/OCUCFormer-main/blob/master/Images/visual_cardiac_modified.png?raw=true)
 
 ## Citation
 You are encouraged to modify/use this code. However, please acknowledge this code and cite the paper accordingly.
