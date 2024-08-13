@@ -1,6 +1,6 @@
 # Official Implementation of OCUCFormer: An Over-Complete Under-Complete Transformer Network for Accelerated MRI Reconstruction in PyTorch
 
-## [OCUCFormer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4705436)
+## [OCUCFormer](https://www.sciencedirect.com/science/article/pii/S0262885624003330a)
 
 ## Abstract:
 
